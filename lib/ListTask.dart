@@ -8,15 +8,23 @@ import 'Todo.dart';
 }
 
   class _ListTaskState extends State<ListTask> {
+    // create array list todos
   List<Todo> todos = [];
+
+    // create object controller form TextEditingController 
+      //Note: we used controller to provide an initial value for a text field 
   TextEditingController controller = new TextEditingController();
 
+  // create function _toggleTodo that have perimater todo and isChecked
+    //it will isChecked if todo isDone
   _toggleTodo(Todo todo, bool isChecked) {
     setState(() {
      todo.isDone = isChecked; 
     });
   }
 
+  // create function _buildItem that have perimeter context and index
+    // declare variable todo and it will return CheckboxListTile that have value, title, onChange
   Widget _buildItem(BuildContext context, int index){
     final todo = todos[index];
 
@@ -30,7 +38,7 @@ import 'Todo.dart';
     );
   }
 
-  // add todo list that use async await
+  // create _addTodo to show dialog
   _addTodo(){
     showDialog<Todo>(
       context: context,
@@ -40,12 +48,17 @@ import 'Todo.dart';
           title: Text('New todo'),
             content: TextField(controller: controller, autofocus: true,),
            actions: <Widget>[
+             
+            // create button cancel in the alert dialog 
             FlatButton(
               child: Text('Cancel'),
               onPressed: (){
                 Navigator.of(context).pop();
               },
             ),
+
+            // create button add in the alert dialog
+              // if textField emplty it will don't show checkbox and even if textField not emplty it will show checkbox
             FlatButton(
               child: Text('Add'),
               onPressed: (){
