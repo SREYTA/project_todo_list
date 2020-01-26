@@ -12,7 +12,7 @@ import 'Todo.dart';
   List<Todo> todos = [];
 
     // create object controller form TextEditingController 
-      //Note: we used controller to provide an initial value for a text field 
+      //Note: we used TextEditingController to provide an initial value for a text field 
   TextEditingController controller = new TextEditingController();
 
   // create function _toggleTodo that have perimater todo and isChecked
@@ -54,6 +54,7 @@ import 'Todo.dart';
               child: Text('Cancel'),
               onPressed: (){
                 Navigator.of(context).pop();
+                controller.clear();
               },
             ),
 
